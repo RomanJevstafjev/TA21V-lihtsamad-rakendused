@@ -53,18 +53,7 @@ def player_move(symbol):
         return False
 
 def checkWin():
-    x_count: int = 0
-    o_count: int = 0
 
-    for row in range(0, len(gameField)):
-        for cage in range(0, len(gameField[row])):
-            if (cage == 'X'):
-                x_count += 1
-            elif (cage == 'O'):
-                o_count += 1
-    
-    if x_count == 3 or o_count == 3:
-        return True
 
 
 def drawField():
