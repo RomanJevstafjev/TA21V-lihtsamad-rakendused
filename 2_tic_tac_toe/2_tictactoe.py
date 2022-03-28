@@ -1,41 +1,9 @@
 from argparse import ArgumentError
 import os
 
-class Player:
-    def __init__(self, cell):
-        self.__cell = cell
-
-    @property
-    def player_cell(self):
-        return self.__cell
-
-    def request_cell(self):
-        str_line_number: str = input(f"<{self.__cell.symbol}> Enter line number:")
-        str_cell_number: str = input(f"<{self.__cell.symbol}> Enter cell number:")
-
-        line_number: int = int(str_line_number)
-        cell_number: int = int(str_cell_number)
-
-        cell_response: CellResponse = CellResponse(line_number - 1, cell_number - 1)
-
-        return cell_response
-
-class CellResponse:
-    def __init__(self, line_index: int, cell_index: int):
-        self.__line_index = line_index
-        self.__cell_index = cell_index
-
-    @property
-    def line_index(self):
-        return self.__line_index
-    
-    @property
-    def cell_index(self):
-        return self.__cell_index
-
 class Cell:
     def __init__(self, symbol: chr = '.'):
-        self.__symbol = symbol
+        self.symbol = symbol
     
     @property
     def symbol(self):
@@ -80,6 +48,38 @@ class Map:
                 print(self.__cells[i][j].symbol, end=' ')
 
             print()
+
+class Player:
+    def __init__(self, cell):
+        self.__cell = cell
+
+    @property
+    def player_cell(self):
+        return self.__cell
+
+    def request_cell(self):
+        str_line_number: str = input(f"<{self.__cell.symbol}> Enter line number:")
+        str_cell_number: str = input(f"<{self.__cell.symbol}> Enter cell number:")
+
+        line_number: int = int(str_line_number)
+        cell_number: int = int(str_cell_number)
+
+        cell_response: CellResponse = CellResponse(line_number - 1, cell_number - 1)
+
+        return cell_response
+
+class CellResponse:
+    def __init__(self, line_index: int, cell_index: int):
+        self.__line_index = line_index
+        self.__cell_index = cell_index
+
+    @property
+    def line_index(self):
+        return self.__line_index
+    
+    @property
+    def cell_index(self):
+        return self.__cell_index
 
 class GameStatus:
     def check_win(self, map: Map, player: Player):
