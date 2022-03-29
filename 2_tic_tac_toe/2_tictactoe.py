@@ -14,7 +14,7 @@ class Cell:
         if value == 'X' or value == 'O' or value == '.':
             self.__symbol = value
         else:
-            raise ValueError("Value can be only X or Y.")
+            raise ValueError("Value can be only X or O.")
 
 class Map:
     __map_size: int = 3
